@@ -6,7 +6,7 @@ const secret = 'ultrasecretsecret';
 
 module.exports = (app) => {
   app.use(cors({
-    origin: config.corsURL,
+    origin: '*',
     credentials: true
   }));
 
