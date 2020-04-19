@@ -44,7 +44,7 @@ module.exports = {
           res.cookie(config.authCookieName, token, {
 			  sameSite: 'none',
 			  secure: true});
-	  res.send([user,token]);
+		  res.send([user,token]);
         })
         .catch(next);
     },
