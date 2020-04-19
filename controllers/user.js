@@ -42,7 +42,6 @@ module.exports = {
           const token = utils.jwt.createToken({ id: user._id });
         
           res.cookie(config.authCookieName, token, {
-			  expires: new Date(Date.now() + 3600000),
 			  sameSite: 'none',
 			  secure:true});
 	  res.send([user,token]);
