@@ -6,20 +6,20 @@ module.exports = {
     const limit = +req.query.limit;
 
     if (limit) {
-      models.Aircraft.find().populate('creator').sort({ _id: -1 }).limit(limit)
+      models.Aircraft.find().lean().populate('creator','username').sort({ _id: -1 }).limit(limit)
         .then((aircraft) => res.send(aircraft))
         .catch(next);
       return;
     }
 
-    models.Aircraft.find().populate('creator')
+    models.Aircraft.find().lean().populate('creator','username')
       .then((aircraft) => res.send(aircraft))
       .catch(next);
   },
   getOne: (req, res, next) => {
     const { id } = req.params;
 
-    models.Aircraft.findOne({ _id: id }).populate('creator')
+    models.Aircraft.findOne({ _id: id }).lean().populate('creator','username')
       .then((aircraft) => res.send(aircraft))
       .catch(next);
     return;

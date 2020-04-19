@@ -1,11 +1,12 @@
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const config = require('./config');
 const cors = require('cors');
 const secret = 'ultrasecretsecret';
 
 module.exports = (app) => {
   app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: config.corsURL,
     credentials: true
   }));
 
