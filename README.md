@@ -2,6 +2,9 @@
 
 This is the Server-Side code of the SkyData project. 
 
+🔗Link to the Client-Side code: https://github.com/PetrovEvgeniy/skydata-react-project
+
+
 ## 💡Basic Functionality
 - Basic Authentication using JWT
 - Connection to the remote database MongoDB
