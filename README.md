@@ -10,4 +10,4 @@ This is the Server-Side code of the SkyData project.
 - Connection to the remote database MongoDB
 - User profile logic
 - Introduction of basic CRUD operations for aircraft data
-- Filtering of information (last 3 added aircarft)
+- Custom Filtering of fetched information (last 3 added aircarft)
