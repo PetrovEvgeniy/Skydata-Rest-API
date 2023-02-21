@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d3812cf5-fbeb-48d1-adbe-7f9b9fd424d5/AppServices/subscriptions/d3812cf5-fbeb-48d1-adbe-7f9b9fd424d5/resourceGroups/skydata-api_group/providers/Microsoft.Web/sites/skydata-api",
+    "appService.deploySubpath": "."
+}

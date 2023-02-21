@@ -1,5 +1,5 @@
 {
-  "name": "SkyData Rest API",
+  "name": "skydata-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,8 +13,9 @@
     "mongoose": "^5.7.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
   },
-  "author": "",
+  "author": "Evgeniy Petrov",
   "license": "ISC"
 }
