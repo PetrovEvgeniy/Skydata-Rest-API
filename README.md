@@ -1,4 +1,4 @@
-# 📨SkyData REST API
+# 📨Skydata - REST API
 
 This is the Server-Side code of the SkyData project. 
 
