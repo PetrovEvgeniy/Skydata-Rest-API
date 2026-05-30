@@ -1,0 +1,20 @@
+name: Keep Alive
+
+on:
+  schedule:
+    # Run every 12 hours (at 8:17 AM and 8:17 PM UTC)
+    - cron: '17 8,20 * * *'
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Health Endpoint
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.RENDER_APP_URL }}/health)
+          echo "Health check response: $response"
+
+      - name: Keep Alive Status
+        run: echo "Keep-alive ping completed"
