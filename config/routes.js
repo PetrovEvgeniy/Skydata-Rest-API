@@ -2,6 +2,10 @@ const router = require('../routes/');
 
 module.exports = (app) => {
 
+    app.get('/health', (req, res) => {
+        res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+    });
+
     app.use('/api/user', router.user);
 
     app.use('/api/aircraft', router.aircraft);

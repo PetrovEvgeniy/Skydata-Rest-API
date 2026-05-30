@@ -2,5 +2,11 @@ const mongoose = require('mongoose');
 const config = require('./config');
 
 module.exports = () => {
-    return mongoose.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+    const dbURL = config.dbURL ? config.dbURL.trim() : '';
+
+    if (!dbURL) {
+        throw new Error('MongoDB connection string is missing. Please set MONGODB_URI environment variable.');
+    }
+
+    return mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 };

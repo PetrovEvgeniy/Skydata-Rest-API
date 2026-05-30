@@ -1,0 +1,32 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+      - name: Wait for Deployment
+        run: sleep 90
+
+      - name: Health Check
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.RENDER_APP_URL }}/health)
+          if [ $response -eq 200 ]; then
+            echo "✅ Health check passed - Service is running"
+          else
+            echo "❌ Health check failed - HTTP status: $response"
+            exit 1
+          fi
+
+      - name: Deployment Status
+        run: echo "Deployment completed and verified successfully on Render"
