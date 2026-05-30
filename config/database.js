@@ -2,30 +2,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 
 module.exports = () => {
-    console.log('=== MongoDB Connection Debug ===');
-    console.log('NODE_ENV:', process.env.NODE_ENV || 'development');
-    console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
-    console.log('MONGODB_URI length:', process.env.MONGODB_URI ? process.env.MONGODB_URI.length : 0);
-    console.log('Config dbURL exists:', !!config.dbURL);
-
     const dbURL = config.dbURL ? config.dbURL.trim() : '';
-
-    // Extract and log the hostname for debugging
-    const hostnameMatch = dbURL.match(/@([^/]+)\//);
-    if (hostnameMatch) {
-        console.log('Extracted hostname:', hostnameMatch[1]);
-    }
-
-    // Mask the password in the URL for logging
-    const maskedURL = dbURL.replace(/\/\/([^:]+):([^@]+)@/, '//$1:****@');
-    console.log('Connection string (masked):', maskedURL);
-    console.log('Connection string length:', dbURL.length);
-
-    // Check for hidden characters
-    const hasHiddenChars = /[\x00-\x1F\x7F-\x9F]/.test(dbURL);
-    console.log('Contains hidden characters:', hasHiddenChars);
-
-    console.log('================================');
 
     if (!dbURL) {
         throw new Error('MongoDB connection string is missing. Please set MONGODB_URI environment variable.');
@@ -37,7 +14,6 @@ module.exports = () => {
         })
         .catch(err => {
             console.error('❌ MongoDB connection failed:', err.message);
-            console.error('Full error:', err);
             throw err;
         });
 };
